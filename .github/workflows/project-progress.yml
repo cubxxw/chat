@@ -32,5 +32,6 @@ jobs:
       - uses: alex-page/github-project-automation-plus@v0.8.3
         with:
           project: OpenIM-V3.1
+          token: ${{ secrets.GITHUB_TOKEN }}
           column: In Progress
           repo-token: ${{ secrets.BOT_GITHUB_TOKEN }}
