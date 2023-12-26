@@ -19,7 +19,7 @@ Currently, there are two different platforms involved in running the CI processe
 All the existing GitHub Actions are defined as YAML files under the `.github/workflows` directory. These can be grouped into:
 
 - **PR Checks**. These actions run all the required validations upon PR creation and update. Covering the DCO compliance check, `x86_64` test batteries (unit, integration, smoke), and code coverage.
-- **Repository automation**. This includes actions such as locking threads on stale issues and PRs. The `lock-issue.yml` workflow file has been updated to use the `secrets.GITHUB_TOKEN` for the `dessant/lock-threads@v4` action.
+- **Repository automation**. This includes actions such as locking threads on stale issues and PRs using the `dessant/lock-threads@v4` action, and issues and epic grooming with the `alex-page/github-project-automation-plus@v0.8.3` action, both utilizing the `secrets.GITHUB_TOKEN` for authentication.
 
 Everything runs on GitHub's provided runners; thus, the tests are limited to run in `x86_64` architectures.
 
