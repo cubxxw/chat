@@ -21,6 +21,8 @@ All the existing GitHub Actions are defined as YAML files under the `.github/wor
 - **PR Checks**. These actions run all the required validations upon PR creation and update. Covering the DCO compliance check, `x86_64` test batteries (unit, integration, smoke), and code coverage.
 - **Repository automation**. Currently, it only covers issues and epic grooming.
 
+  The 'Lock Threads' action requires a GitHub token to interact with the GitHub API. This token is stored in the GitHub secrets store and is passed to the action in the workflow file.
+
 Everything runs on GitHub's provided runners; thus, the tests are limited to run in `x86_64` architectures.
 
 
