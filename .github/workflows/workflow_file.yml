@@ -1,0 +1,23 @@
+name: Dependency Review
+
+on: [push, pull_request]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check repository settings
+        id: check-settings
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const { data } = await github.rest.repos.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+            return data.security_and_analysis.enabled && data.dependency_graph.enabled;
+          result-encoding: string
+
+      - name: Run dependency review
+        if: steps.check-settings.outputs.result == 'true'
+        uses: actions/dependency-review-action@v3
