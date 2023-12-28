@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   dependency-review:
+    if: github.repository_dependency_graph_enabled && github.repository_advanced_security_enabled
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout Repository'
