@@ -9,7 +9,28 @@ permissions:
   contents: read
 
 jobs:
+  check-dependency-settings:
+    runs-on: ubuntu-latest
+    outputs:
+      dependency-settings-ok: ${{ steps.check-settings.outputs.dependency-settings-ok }} 
+    steps:
+      - name: 'Check Dependency Settings'
+        id: check-settings
+        run: |
+          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/dependency-graph | grep -q '"enabled": true'
+          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/advanced-security | grep -q '"enabled": true'
+          if [ $? -ne 0 ]; then
+            echo "::error ::Dependency graph and GitHub Advanced Security are not enabled. Please enable them to continue."
+            echo "dependency-settings-ok=false" > $GITHUB_ENV
+            exit 78
+          else
+            echo "dependency-settings-ok=true" > $GITHUB_ENV
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   dependency-review:
+    needs: check-dependency-settings
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout Repository'
