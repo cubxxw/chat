@@ -14,5 +14,13 @@ jobs:
     steps:
       - name: 'Checkout Repository'
         uses: actions/checkout@v3
+      - name: 'Check Repository Settings'
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const repo = await github.repos.get(context.repo)
+            if (!repo.data.has_issues || !repo.data.has_wiki) {
+              core.setFailed('Dependency graph and GitHub Advanced Security must be enabled on the repository.')
+            }
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@v3
