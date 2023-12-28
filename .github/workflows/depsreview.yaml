@@ -14,5 +14,19 @@ jobs:
     steps:
       - name: 'Checkout Repository'
         uses: actions/checkout@v3
+      - name: 'Check Features Enabled'
+        id: check_features
+        run: |
+          echo "Checking if Dependency graph and GitHub Advanced Security are enabled..."
+          RESPONSE=$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/dependency-graph)
+          DEP_GRAPH_ENABLE=$(echo $RESPONSE | jq .dependency_graph)
+          SEC_ADV_ENABLE=$(echo $RESPONSE | jq .advanced_security)
+          if [ "$DEP_GRAPH_ENABLE" != "true" ] || [ "$SEC_ADV_ENABLE" != "true" ]; then
+            echo "Dependency graph or GitHub Advanced Security is not enabled on this repository."
+            echo "Please enable them to proceed with the dependency review."
+            exit 1
+          fi
       - name: 'Dependency Review'
+        if: steps.check_features.outputs.dep_graph == 'true' && steps.check_features.outputs.sec_adv == 'true'
         uses: actions/dependency-review-action@v3
