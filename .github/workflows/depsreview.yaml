@@ -13,6 +13,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout Repository'
+      - name: 'Check Repository Settings'
         uses: actions/checkout@v3
-      - name: 'Dependency Review'
+      run: |
+          echo "Checking if the Dependency graph and GitHub Advanced Security are enabled..."
+          # Since there's no existing GitHub Action, we use a custom script
+          enablement_status=$(curl -H \"Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}\" https://api.github.com/repos/${{ github.repository }}/vulnerability-alerts)
+          if [[ \"$enablement_status\" != *\"true\"* ]]; then
+            echo \"Error: Dependency graph is not enabled. Please enable it in the repository settings.\" >&2
+            exit 1
+          fi
+          enablement_status=$(curl -H \"Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}\" https://api.github.com/repos/${{ github.repository }}/code-scanning/alerts)
+          if [[ \"$enablement_status\" != *\"true\"* ]]; then
+            echo \"Error: GitHub Advanced Security is not enabled. Please enable it in the repository settings.\" >&2
+            exit 1
+          fi
+        uses: actions/dependency-review-action@v3
         uses: actions/dependency-review-action@v3
