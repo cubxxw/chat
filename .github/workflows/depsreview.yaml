@@ -1,3 +1,6 @@
+# NOTE: If you encounter an error that says "Dependency review is not supported on this repository",
+# please ensure that the Dependency graph and GitHub Advanced Security are enabled on your private repository.
+# You can enable these settings at https://github.com/cubxxw/chat/settings/security_analysis
 # Copyright © 2023 KubeCub open source community. All rights reserved.
 # Licensed under the MIT License (the "License");
 # you may not use this file except in compliance with the License.
