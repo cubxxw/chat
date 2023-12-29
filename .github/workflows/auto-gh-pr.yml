@@ -1,4 +1,7 @@
-# Copyright © 2023 OpenIM open source community. All rights reserved.
+  - name: Project automation
+    uses: alex-page/github-project-automation-plus@v0.8.3
+    with:
+      token: ${{ secrets.GITHUB_TOKEN }}# Copyright © 2023 OpenIM open source community. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -55,6 +58,9 @@ jobs:
           env:
               GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
               GH_TOKEN: ${{ github.token }}
-              ISSUE: ${{ github.event.issue.html_url }}
+      - name: Project automation
+        uses: alex-page/github-project-automation-plus@v0.8.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}              ISSUE: ${{ github.event.issue.html_url }}
               OWNER: ${{ github.repository_owner }}
               REPO: ${{ github.event.repository.name }}
