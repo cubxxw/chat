@@ -12,6 +12,12 @@ jobs:
   dependency-review:
     runs-on: ubuntu-latest
     steps:
+      - name: 'Check for Dependency graph and GitHub Advanced Security'
+        run: |
+          if [ "$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/$GITHUB_REPOSITORY | jq .security_and_analysis.enabled)" != "true" ]; then
+            echo "Dependency graph and GitHub Advanced Security are not enabled for this repository. Please enable them in the repository settings."
+            exit 1
+          fi
       - name: 'Checkout Repository'
         uses: actions/checkout@v3
       - name: 'Dependency Review'
