@@ -12,7 +12,21 @@ jobs:
   dependency-review:
     runs-on: ubuntu-latest
     steps:
+            - name: 'Check Repository Settings'
+        id: check-settings
+        run: |
+          DEP_GRAPH=$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/settings | jq '.dependency_graph')
+          SEC_ANALYSIS=$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/settings | jq '.security_and_analysis')
+          if [ "$DEP_GRAPH" == "true" ] && [ "$SEC_ANALYSIS" == "true" ]; then
+            echo "::set-output name=success::true"
+          else
+            echo "::set-output name=success::false"
+            exit 1
+          fi
       - name: 'Checkout Repository'
         uses: actions/checkout@v3
+        if: steps.check-settings.outputs.success == 'true'
       - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v3
+        if: steps.check-settings.outputs.success == 'true'
         uses: actions/dependency-review-action@v3
