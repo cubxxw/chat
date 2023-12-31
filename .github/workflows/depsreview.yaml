@@ -11,7 +11,15 @@ permissions:
 jobs:
   dependency-review:
     runs-on: ubuntu-latest
-    steps:
+        steps:
+      - name: 'Check Repository Settings'
+        run: |
+          DEPENDENCY_GRAPH_ENABLED=$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/settings | jq '.dependency_graph')
+          ADVANCED_SECURITY_ENABLED=$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/settings | jq '.advanced_security')
+          if [ "$DEPENDENCY_GRAPH_ENABLED" != "true" ] || [ "$ADVANCED_SECURITY_ENABLED" != "true" ]; then
+            echo "Dependency graph and/or GitHub Advanced Security are not enabled on this repository."
+            exit 1
+          fi
       - name: 'Checkout Repository'
         uses: actions/checkout@v3
       - name: 'Dependency Review'
