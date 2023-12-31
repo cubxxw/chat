@@ -119,6 +119,8 @@ Here's a breakdown of the targets and options provided by the Makefile:
 27. `help`: Displays information about available targets and options.
 28. `help-all`: Shows detailed information about all available targets and options.
 
+Please ensure that all necessary secrets are defined in the repository's settings on GitHub. For example, the 'BOT_GITHUB_TOKEN' secret, which is used to authenticate the GitHub Actions bot, must be defined and have a valid value. Failure to do so may cause certain workflows to fail.
+
 **Options 😄**
 
 1. `DEBUG`: A boolean option that determines whether or not to generate debug symbols. The default value is 0 (false).
