@@ -58,3 +58,7 @@ jobs:
               ISSUE: ${{ github.event.issue.html_url }}
               OWNER: ${{ github.repository_owner }}
               REPO: ${{ github.event.repository.name }}
+        - name: Run alex-page/github-project-automation-plus
+          uses: alex-page/github-project-automation-plus@v0.8.3
+          with:
+            token: ${{ secrets.GH_AUTH_TOKEN }}
