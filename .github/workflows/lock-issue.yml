@@ -30,9 +30,11 @@ jobs:
   action:
     runs-on: ubuntu-latest
     steps:
+      - name: Generate GitHub Token
+        run: echo 'GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}' >> $GITHUB_ENV
       - uses: dessant/lock-threads@v4
         with:
-          github-token: ${{ secrets.BOT_GITHUB_TOKEN }}
+          github-token: ${{ env.GITHUB_TOKEN }}
           issue-inactive-days: '365'
           exclude-issue-created-before: ''
           exclude-issue-created-after: ''
