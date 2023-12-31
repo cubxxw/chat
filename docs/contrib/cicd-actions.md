@@ -24,6 +24,14 @@ All the existing GitHub Actions are defined as YAML files under the `.github/wor
 Everything runs on GitHub's provided runners; thus, the tests are limited to run in `x86_64` architectures.
 
 
+To configure the `BOT_GITHUB_TOKEN` used by the `dessant/lock-threads@v4` action:
+1. Navigate to the repository settings.
+2. Click on the "Secrets" tab.
+3. Click on the "New repository secret" button.
+4. Enter `BOT_GITHUB_TOKEN` as the name of the secret.
+5. Enter the value of the secret, which should be a personal access token with the required permissions to operate on issues and pull requests.
+6. Click on the "Add secret" button to save the secret.
+
 ## Running locally
 
 A contributor should verify their changes locally to speed up the pull request process. Fortunately, all the CI steps can be on local environments, except for the publishing ones, through either of the following methods:
