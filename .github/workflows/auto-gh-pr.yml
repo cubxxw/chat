@@ -53,8 +53,9 @@ jobs:
             # gh pr create --base main --head feat/auto-release-pr-624  --title "The bug is fixed" --body "$x" --repo OpenIMSDK/Open-IM-Server --reviewer "cubxxw"
           continue-on-error: true
           env:
-              GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               GH_TOKEN: ${{ github.token }}
               ISSUE: ${{ github.event.issue.html_url }}
               OWNER: ${{ github.repository_owner }}
               REPO: ${{ github.event.repository.name }}
+              token: ${{ secrets.GITHUB_TOKEN }}
