@@ -126,4 +126,22 @@ Here's a breakdown of the targets and options provided by the Makefile:
 3. `PLATFORMS`: Specifies the platforms to build for. The default platforms are `linux_arm64` and `linux_amd64`. Contributors can specify multiple platforms by providing a space-separated list of platform names.
 4. `V`: A boolean option that enables verbose build output when set to 1 (true). The default value is 0 (false).
 
-With these targets and options in place, contributors can efficiently build projects using the Makefile. Happy coding! 🚀😊
+With these targets and options in place, contributors can efficiently build projects using the Makefile. Happy coding! 
+
+</section>
+<section id="J">
+
+## Enabling Dependency graph and GitHub Advanced Security
+
+To enable the Dependency graph and GitHub Advanced Security features for your repository, follow these steps:
+
+1. Navigate to the main page of the repository.
+2. Under the repository name, click on "Settings".
+3. In the left sidebar, click on "Security & analysis".
+4. Under "Dependency graph", click on "Enable".
+5. Under "GitHub Advanced Security", click on "Enable".
+6. If prompted, confirm the changes.
+
+Please note that these settings are only available for private repositories and may require additional permissions or an advanced plan.
+
+</section>🚀😊
