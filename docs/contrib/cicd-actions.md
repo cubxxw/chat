@@ -65,6 +65,8 @@ release                      release the project 🎉
 help                         Show this help info. ℹ️
 help-all                     Show all help details info. ℹ️📚
 
+**Please note that for the GitHub Actions workflows to perform as expected, you must set the `BOT_GITHUB_TOKEN` secret with a valid GitHub token in the repository's settings.**
+
 Options:
 
 DEBUG            Whether or not to generate debug symbols. Default is 0. ❓
