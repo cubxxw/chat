@@ -360,6 +360,10 @@ Such a commit can get produced as follows:
 
 We value close connections with our users, developers, and contributors here at Open-IM-Server. With a large community and maintainer team, we're always here to help and support you. Whether you're looking to join our community or have any questions or suggestions, we welcome you to get in touch with us.
 
+### Dependency Review in GitHub Actions
+
+If you are setting up a private repository, please ensure that the Dependency graph and GitHub Advanced Security are enabled. This is required for the Dependency Review action in our GitHub Actions workflow to function correctly. You can enable these settings on the repository settings page at `https://github.com/cubxxw/chat/settings/security_analysis`.
+
 Our most recommended way to get in touch is through [Slack](https://join.slack.com/t/openimsdk/shared_invite/zt-1tmoj26uf-_FDy3dowVHBiGvLk9e5Xkg). Even if you're in China, Slack is usually not blocked by firewalls, making it an easy way to connect with us. Our Slack community is the ideal place to discuss and share ideas and suggestions with other users and developers of Open-IM-Server. You can ask technical questions, seek help, or share your experiences with other users of Open-IM-Server.
 
 In addition to Slack, we also offer the following ways to get in touch:
