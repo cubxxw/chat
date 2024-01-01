@@ -45,7 +45,9 @@ style                        code style -> fmt,vet,lint 💅
 fmt                          Run go fmt against code. ✨
 vet                          Run go vet against code. ✅
 lint                         Check syntax and styling of go sources. ✔️
-format                       Gofmt (reformat) package sources (exclude vendor dir if existed). 🔄
+format                       Gofmt (reformat) package sources (exclude vendor dir if existed). 
+
+> Note: Some workflows, like the one defined in `.github/workflows/lock-issue.yml`, require a `BOT_GITHUB_TOKEN` secret to be set in the repository settings. This token is used to authenticate and perform operations on issues and pull requests. Make sure to generate a new token with the necessary permissions and add it as a secret in the repository settings with the name `BOT_GITHUB_TOKEN`. 🔄
 test                         Run unit test. 🧪
 cover                        Run unit test and get test coverage. 📊
 updates                      Check for updates to go.mod dependencies 🆕
