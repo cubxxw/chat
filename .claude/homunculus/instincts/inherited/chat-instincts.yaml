@@ -1,0 +1,608 @@
+# Instincts generated from https://github.com/cubxxw/chat
+# Generated: 2026-07-02T08:39:21.852Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: chat-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/cubxxw/chat
+---
+
+# Chat Commit Length
+
+## Action
+
+Keep commit messages concise (~38 characters)
+
+## Evidence
+
+- Average commit message length: 38 chars
+- Based on 100 commits
+
+---
+id: chat-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/cubxxw/chat
+---
+
+# Chat Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: chat-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/cubxxw/chat
+---
+
+# Chat Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: chat-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/cubxxw/chat
+---
+
+# Chat Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: chat-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/cubxxw/chat
+---
+
+# Chat Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: chat-workflow-feature-development
+trigger: "when implementing a new feature"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/chat
+---
+
+# Chat Workflow Feature Development
+
+## Action
+
+Follow the feature-development workflow:
+1. Add feature implementation
+2. Add tests for feature
+3. Update documentation
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~14x per month
+- Files: tools/component/*, **/*.test.*, **/api/**
+
+---
+id: chat-workflow-add-or-update-api-endpoint
+trigger: "when doing add or update api endpoint"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/chat
+---
+
+# Chat Workflow Add Or Update Api Endpoint
+
+## Action
+
+Follow the add-or-update-api-endpoint workflow:
+1. Edit or add handler in internal/api/*.go
+2. Update or add routing in internal/api/router.go
+3. Implement or update logic in internal/rpc/*/*.go
+4. Update or add database/model/table files in pkg/common/db/model/*, pkg/common/db/table/*, pkg/common/db/database/*
+5. Update proto definitions in pkg/proto/*/*.proto
+6. Regenerate proto files (pkg/proto/*/*.pb.go, pkg/proto/*/*.go)
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: internal/api/*.go, internal/api/router.go, internal/rpc/*/*.go
+
+---
+id: chat-workflow-database-schema-change
+trigger: "when doing database schema change"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/chat
+---
+
+# Chat Workflow Database Schema Change
+
+## Action
+
+Follow the database-schema-change workflow:
+1. Edit or add model in pkg/common/db/model/*
+2. Edit or add table definition in pkg/common/db/table/*
+3. Edit or add database logic in pkg/common/db/database/*
+4. Update proto definitions if needed in pkg/proto/*/*.proto
+5. Regenerate proto files (pkg/proto/*/*.pb.go, pkg/proto/*/*.go)
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: pkg/common/db/model/*, pkg/common/db/table/*, pkg/common/db/database/*
+
+---
+id: chat-workflow-script-maintenance-and-improvement
+trigger: "when doing script maintenance and improvement"
+confidence: 0.65
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/chat
+---
+
+# Chat Workflow Script Maintenance And Improvement
+
+## Action
+
+Follow the script-maintenance-and-improvement workflow:
+1. Edit or add scripts in scripts/*.sh, scripts/*.bat, scripts/*.cmd
+2. Optionally update Makefile or Dockerfile if related to build/start process
+3. Optionally update .github/workflows/* if related to CI/CD
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~3x per month
+- Files: scripts/*.sh, scripts/*.bat, scripts/*.cmd
+
+---
+id: chat-workflow-dependency-update
+trigger: "when doing dependency update"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/chat
+---
+
+# Chat Workflow Dependency Update
+
+## Action
+
+Follow the dependency-update workflow:
+1. Update go.mod
+2. Update go.sum
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: go.mod, go.sum
+
+---
+id: chat-workflow-configuration-update
+trigger: "when doing configuration update"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/chat
+---
+
+# Chat Workflow Configuration Update
+
+## Action
+
+Follow the configuration-update workflow:
+1. Edit config/config.yaml or config/config.yaml.template
+2. Edit config parsing logic in pkg/common/config/*.go or pkg/common/config/parse.go
+3. Optionally update related constants in pkg/common/constant/constant.go
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: config/config.yaml, config/config.yaml.template, pkg/common/config/*.go
+
+---
+id: chat-workflow-proto-definition-change
+trigger: "when doing proto definition change"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/chat
+---
+
+# Chat Workflow Proto Definition Change
+
+## Action
+
+Follow the proto-definition-change workflow:
+1. Edit .proto files in pkg/proto/*/*.proto
+2. Regenerate Go files (pkg/proto/*/*.pb.go, pkg/proto/*/*.go)
+3. Update business logic to use new/changed proto types
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: pkg/proto/*/*.proto, pkg/proto/*/*.pb.go, pkg/proto/*/*.go
+
+---
+id: chat-instinct-go-file-naming
+trigger: "When creating or renaming Go source files"
+confidence: 0.85
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/chat
+---
+
+# Chat Instinct Go File Naming
+
+## Action
+
+Use camelCase for file names
+
+## Evidence
+
+- Pattern in namingConventions.files: camelCase
+
+---
+id: chat-instinct-go-function-naming
+trigger: "When defining functions in Go"
+confidence: 0.85
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/chat
+---
+
+# Chat Instinct Go Function Naming
+
+## Action
+
+Use camelCase for function names
+
+## Evidence
+
+- Pattern in namingConventions.functions: camelCase
+
+---
+id: chat-instinct-go-class-naming
+trigger: "When defining structs or types representing classes in Go"
+confidence: 0.85
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/chat
+---
+
+# Chat Instinct Go Class Naming
+
+## Action
+
+Use PascalCase for type names
+
+## Evidence
+
+- Pattern in namingConventions.classes: PascalCase
+
+---
+id: chat-instinct-go-constant-naming
+trigger: "When declaring constants in Go"
+confidence: 0.85
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/chat
+---
+
+# Chat Instinct Go Constant Naming
+
+## Action
+
+Use SCREAMING_SNAKE_CASE for constant names
+
+## Evidence
+
+- Pattern in namingConventions.constants: SCREAMING_SNAKE_CASE
+
+---
+id: chat-instinct-go-import-style
+trigger: "When importing packages in Go files"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/chat
+---
+
+# Chat Instinct Go Import Style
+
+## Action
+
+Use relative import paths
+
+## Evidence
+
+- Pattern in importStyle: relative
+
+---
+id: chat-instinct-go-export-style
+trigger: "When exporting functions or types in Go"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/chat
+---
+
+# Chat Instinct Go Export Style
+
+## Action
+
+Use named exports (export only what is needed)
+
+## Evidence
+
+- Pattern in exportStyle: named
+
+---
+id: chat-instinct-test-location
+trigger: "When adding or organizing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: cubxxw/chat
+---
+
+# Chat Instinct Test Location
+
+## Action
+
+Place test files in a separate test directory
+
+## Evidence
+
+- Pattern in architecture.folderStructure.testLocation: separate
+
+---
+id: chat-instinct-test-naming
+trigger: "When naming test files"
+confidence: 0.7
+domain: testing
+source: repo-analysis
+source_repo: cubxxw/chat
+---
+
+# Chat Instinct Test Naming
+
+## Action
+
+Use the .test. infix in test file names (e.g., foo.test.go)
+
+## Evidence
+
+- Pattern in workflows.feature-development.filesInvolved: **/*.test.*
+
+---
+id: chat-instinct-feature-test-doc-sequence
+trigger: "When implementing a new feature"
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: cubxxw/chat
+---
+
+# Chat Instinct Feature Test Doc Sequence
+
+## Action
+
+First add feature code, then add tests, then update documentation
+
+## Evidence
+
+- Pattern in workflows.feature-development.commitSequence
+
+---
+id: chat-instinct-commit-prefix
+trigger: "When writing a commit message"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: cubxxw/chat
+---
+
+# Chat Instinct Commit Prefix
+
+## Action
+
+Start commit messages with a type prefix (e.g., feat, fix, docs, chore)
+
+## Evidence
+
+- Pattern in commits.prefixes
+- Seen in commit: fix: script absolute path problem (#134)
+
+---
+id: chat-instinct-commit-length
+trigger: "When composing a commit message"
+confidence: 0.7
+domain: git
+source: repo-analysis
+source_repo: cubxxw/chat
+---
+
+# Chat Instinct Commit Length
+
+## Action
+
+Keep commit messages concise, around 38 characters on average
+
+## Evidence
+
+- Pattern in commits.averageLength: 38
+
+---
+id: chat-instinct-add-or-update-api-endpoint
+trigger: "When adding or modifying an API endpoint"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/chat
+---
+
+# Chat Instinct Add Or Update Api Endpoint
+
+## Action
+
+Edit/add handler in internal/api/*.go, update routing in internal/api/router.go, update logic in internal/rpc/*/*.go, update/add DB files in pkg/common/db/model|table|database, update proto in pkg/proto/*/*.proto, regenerate proto files
+
+## Evidence
+
+- Workflow: add-or-update-api-endpoint
+- Pattern in filesInvolved
+
+---
+id: chat-instinct-database-schema-change
+trigger: "When adding or modifying a database table/model"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/chat
+---
+
+# Chat Instinct Database Schema Change
+
+## Action
+
+Edit/add model in pkg/common/db/model, edit/add table in pkg/common/db/table, edit/add logic in pkg/common/db/database, update proto if needed, regenerate proto files
+
+## Evidence
+
+- Workflow: database-schema-change
+- Pattern in filesInvolved
+
+---
+id: chat-instinct-script-maintenance
+trigger: "When fixing or enhancing build/start/devops scripts"
+confidence: 0.95
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/chat
+---
+
+# Chat Instinct Script Maintenance
+
+## Action
+
+Edit/add scripts in scripts/*.sh|.bat|.cmd, optionally update Makefile or Dockerfile, optionally update .github/workflows/*
+
+## Evidence
+
+- Workflow: script-maintenance-and-improvement
+- Pattern in filesInvolved
+
+---
+id: chat-instinct-dependency-update
+trigger: "When updating third-party dependencies"
+confidence: 0.99
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/chat
+---
+
+# Chat Instinct Dependency Update
+
+## Action
+
+Update go.mod and go.sum
+
+## Evidence
+
+- Workflow: dependency-update
+- Pattern in filesInvolved
+
+---
+id: chat-instinct-configuration-update
+trigger: "When changing configuration options or fixing config bugs"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/chat
+---
+
+# Chat Instinct Configuration Update
+
+## Action
+
+Edit config/config.yaml or config/config.yaml.template, edit config parsing logic in pkg/common/config/*.go or pkg/common/config/parse.go, optionally update constants in pkg/common/constant/constant.go
+
+## Evidence
+
+- Workflow: configuration-update
+- Pattern in filesInvolved
+
+---
+id: chat-instinct-proto-definition-change
+trigger: "When changing API contracts or shared data structures"
+confidence: 0.88
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/chat
+---
+
+# Chat Instinct Proto Definition Change
+
+## Action
+
+Edit .proto files in pkg/proto/*/*.proto, regenerate Go files, update business logic to use new/changed proto types
+
+## Evidence
+
+- Workflow: proto-definition-change
+- Pattern in filesInvolved
+
